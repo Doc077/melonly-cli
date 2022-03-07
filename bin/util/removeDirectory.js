@@ -1,4 +1,5 @@
 const { existsSync, statSync, unlinkSync, rmdirSync, readdirSync } = require('fs')
+const { join } = require('path')
 
 const removeDirectory = (path) => {
     if (existsSync(path)) {

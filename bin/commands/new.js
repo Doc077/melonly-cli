@@ -4,7 +4,7 @@ const { removeDirectory } = require('../util/removeDirectory')
 
 const { runCommand } = require('../util/runCommand')
 const { infoLine } = require('../util/infoLine')
-const { errorLine } = require('../util/infoLine')
+const { errorLine } = require('../util/errorLine')
 
 module.exports = () => {
     const appName = process.argv[3]
@@ -29,21 +29,19 @@ module.exports = () => {
 
     copyFileSync(join(process.cwd(), '.env.example'), join(process.cwd(), '.env'))
 
-    readFileSync(join(process.cwd(), 'package.json'), (error, data) => {
-        if (error) {
-            errorLine('Installation failed')
-        }
+    try {
+        let packageData = readFileSync(join(process.cwd(), 'package.json')).toString()
 
-        let projectData = JSON.parse(data)
+        packageData = packageData.replace('"name": "melonly"', `"name": "${appName}"`)
 
-        projectData.name = appName
-
-        writeFileSync(join(process.cwd(), 'package.json'), projectData, (error) => {
+        writeFileSync(join(process.cwd(), 'package.json'), packageData, (error) => {
             if (error) {
-                errorLine('Installation failed')
+                errorLine(error)
             }
         })
-    })
+    } catch (error) {
+        errorLine(error)
+    }
 
-    infoLine(`Your project has been created. Run 'cd ${appName}' and 'npm start' to launch your application.`)
+    infoLine(`Your project has been created. Run 'cd ${appName} && npm start' to launch your application.`)
 }
