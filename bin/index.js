@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
-const { errorLine } = require('./util/infoLine')
+const { errorLine } = require('./util/errorLine')
 
+const commandsCommand = require('./commands/commands')
 const makeCommand = require('./commands/make')
 const newCommand = require('./commands/new')
 const openCommand = require('./commands/open')
@@ -36,7 +37,12 @@ switch (process.argv[2]) {
 
         break
 
+    case 'commands':
     case undefined:
+        commandsCommand()
+
+        break
+
     default:
-        errorLine(`Unknown command. Run 'melon commands' to get available commands list.`)
+        errorLine(`Unknown command. Run 'melon commands' to get list of available commands.`)
 }
