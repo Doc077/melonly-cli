@@ -11,8 +11,10 @@ module.exports = () => {
 
     infoLine(`Creating new project '${appName}'...`)
 
-    if (!runCommand(`git clone https://github.com/Doc077/melonly.git ${appName}`)) {
+    if (!runCommand(`git clone https://github.com/Doc077/melonly.git ${appName} --branch ${require('../../package.json').version}`)) {
         errorLine('Installation failed')
+
+        process.exit(1)
     }
 
     infoLine('Installing packages...')
@@ -21,6 +23,8 @@ module.exports = () => {
 
     if (!runCommand('npm install')) {
         errorLine('Installation failed')
+
+        process.exit(1)
     }
 
     removeDirectory(join(process.cwd(), '.git'))
@@ -36,11 +40,15 @@ module.exports = () => {
 
         writeFileSync(join(process.cwd(), 'package.json'), packageData, (error) => {
             if (error) {
-                errorLine(error)
+                errorLine('Installation failed')
+
+                process.exit(1)
             }
         })
     } catch (error) {
-        errorLine(error)
+        errorLine('Installation failed')
+
+        process.exit(1)
     }
 
     infoLine(`Your project has been created. Run 'cd ${appName} && npm start' to launch your application.`)
