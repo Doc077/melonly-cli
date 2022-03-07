@@ -2,12 +2,43 @@ const { join } = require('path')
 
 const { errorLine } = require('../util/errorLine')
 const { infoLine } = require('../util/infoLine')
-const { makeFile } = require('../util/makeFile')
+const { publishTemplate } = require('../util/publishTemplate')
 
 module.exports = () => {
     switch (process.argv[3]) {
+        case 'controller':
+            publishTemplate(
+                join(process.cwd(), 'src', process.argv[4], `${process.argv[4]}.controller.ts`),
+
+                'controller', {
+                    className: `${process.argv[4].charAt(0).toUpperCase()}${process.argv[4].slice(1)}Controller`,
+                    path: `${process.argv[4]}s`,
+                    view: `${process.argv[4]}`,
+                },
+            )
+
+            break
+
+        case 'email':
+            publishTemplate(
+                join(process.cwd(), 'src', 'mail', `${process.argv[4]}.email.ts`),
+
+                'email', {
+                    className: `${process.argv[4].charAt(0).toUpperCase()}${process.argv[4].slice(1)}Email`,
+                    view: `${process.argv[4]}`,
+                },
+            )
+
+            break
+
         case 'service':
-            makeFile(join(process.cwd(), 'src', process.argv[4], `${process.argv[4]}.service.ts`), '//some service content')
+            publishTemplate(
+                join(process.cwd(), 'src', process.argv[4], `${process.argv[4]}.service.ts`),
+
+                'service', {
+                    className: `${process.argv[4].charAt(0).toUpperCase()}${process.argv[4].slice(1)}Service`,
+                },
+            )
 
             break
 
