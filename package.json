@@ -1,6 +1,6 @@
 {
     "name": "@melonly/cli",
-    "version": "1.0.0-alpha",
+    "version": "1.0.0-alpha.2",
     "description": "Official CLI for Melonly.js framework",
     "license": "MIT",
     "author": "Dominik Rajkowski",
