@@ -1,7 +1,7 @@
-const { join } = require('path')
 const { copyFileSync, readFileSync, writeFileSync } = require('fs')
-const { removeDirectory } = require('../util/removeDirectory')
+const { join } = require('path')
 
+const { removeDirectory } = require('../util/removeDirectory')
 const { runCommand } = require('../util/runCommand')
 const { infoLine } = require('../util/infoLine')
 const { errorLine } = require('../util/errorLine')
@@ -11,7 +11,7 @@ module.exports = () => {
 
     infoLine(`Creating new project '${appName}'...`)
 
-    if (!runCommand(`git clone https://github.com/Doc077/melonly.git ${appName} --branch ${require('../../package.json').version}`)) {
+    if (!runCommand(`git clone https://github.com/Doc077/melonly.git ${appName}`)) {
         errorLine('Installation failed')
 
         process.exit(1)
@@ -51,5 +51,5 @@ module.exports = () => {
         process.exit(1)
     }
 
-    infoLine(`Your project has been created. Run 'cd ${appName} && npm start' to launch your application.`)
+    infoLine(`Your project has been created. Run 'cd ${appName} && npm start' to start your application.`)
 }
