@@ -1,6 +1,6 @@
 {
     "name": "@melonly/cli",
-    "version": "1.0.0-alpha.3",
+    "version": "1.0.0-alpha.4",
     "description": "Official CLI for Melonly.js framework",
     "repository": {
         "type": "git",
