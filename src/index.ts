@@ -10,7 +10,9 @@ import startCommand from './commands/start'
 import updateCommand from './commands/update'
 import versionCommand from './commands/version'
 
-switch (process.argv[2]) {
+const command = process.argv[2]
+
+switch (command) {
     case 'new':
         newCommand()
 
@@ -50,5 +52,5 @@ switch (process.argv[2]) {
         break
 
     default:
-        errorLine(`Unknown command. Run 'melon commands' to get list of available commands.`)
+        errorLine(`Invalid command. Run 'melon commands' to get list of available commands.`)
 }

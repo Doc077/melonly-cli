@@ -5,14 +5,17 @@ import { infoLine } from '../util/infoLine'
 import { publishTemplate } from '../util/publishTemplate'
 
 export default () => {
-    switch (process.argv[3]) {
+    const generatedType = process.argv[3]
+    const generatedName = process.argv[4]
+
+    switch (generatedType) {
         case 'channel':
             publishTemplate(
-                join(process.cwd(), 'src', 'broadcasting', `${process.argv[4]}.channel.ts`),
+                join(process.cwd(), 'src', 'broadcasting', `${generatedName}.channel.ts`),
 
                 'channel', {
-                    className: `${process.argv[4].charAt(0).toUpperCase()}${process.argv[4].slice(1)}Channel`,
-                    name: `${process.argv[4]}`,
+                    className: `${generatedName.charAt(0).toUpperCase()}${generatedName.slice(1)}Channel`,
+                    name: `${generatedName}`,
                 },
             )
 
@@ -20,12 +23,12 @@ export default () => {
 
         case 'controller':
             publishTemplate(
-                join(process.cwd(), 'src', process.argv[4], `${process.argv[4]}.controller.ts`),
+                join(process.cwd(), 'src', generatedName, `${generatedName}.controller.ts`),
 
                 'controller', {
-                    className: `${process.argv[4].charAt(0).toUpperCase()}${process.argv[4].slice(1)}Controller`,
-                    path: `${process.argv[4]}s`,
-                    view: `${process.argv[4]}`,
+                    className: `${generatedName.charAt(0).toUpperCase()}${generatedName.slice(1)}Controller`,
+                    path: `${generatedName}s`,
+                    view: `${generatedName}`,
                 },
             )
 
@@ -33,11 +36,11 @@ export default () => {
 
         case 'email':
             publishTemplate(
-                join(process.cwd(), 'src', 'mail', `${process.argv[4]}.email.ts`),
+                join(process.cwd(), 'src', 'mail', `${generatedName}.email.ts`),
 
                 'email', {
-                    className: `${process.argv[4].charAt(0).toUpperCase()}${process.argv[4].slice(1)}Email`,
-                    view: `${process.argv[4]}`,
+                    className: `${generatedName.charAt(0).toUpperCase()}${generatedName.slice(1)}Email`,
+                    view: `${generatedName}`,
                 },
             )
 
@@ -45,20 +48,20 @@ export default () => {
 
         case 'service':
             publishTemplate(
-                join(process.cwd(), 'src', process.argv[4], `${process.argv[4]}.service.ts`),
+                join(process.cwd(), 'src', generatedName, `${generatedName}.service.ts`),
 
                 'service', {
-                    className: `${process.argv[4].charAt(0).toUpperCase()}${process.argv[4].slice(1)}Service`,
+                    className: `${generatedName.charAt(0).toUpperCase()}${generatedName.slice(1)}Service`,
                 },
             )
 
             break
 
         default:
-            errorLine(`Unknown generator command '${process.argv[3]}'`)
+            errorLine(`Unknown generator command '${generatedType}'`)
 
             return
     }
 
-    infoLine(`Generated new ${process.argv[3]} '${process.argv[4]}'`)
+    infoLine(`Generated new ${generatedType} '${generatedName}'`)
 }
