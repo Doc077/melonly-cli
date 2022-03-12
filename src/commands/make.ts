@@ -6,6 +6,18 @@ import { publishTemplate } from '../util/publishTemplate'
 
 export default () => {
     switch (process.argv[3]) {
+        case 'channel':
+            publishTemplate(
+                join(process.cwd(), 'src', 'broadcasting', `${process.argv[4]}.channel.ts`),
+
+                'channel', {
+                    className: `${process.argv[4].charAt(0).toUpperCase()}${process.argv[4].slice(1)}Channel`,
+                    name: `${process.argv[4]}`,
+                },
+            )
+
+            break
+
         case 'controller':
             publishTemplate(
                 join(process.cwd(), 'src', process.argv[4], `${process.argv[4]}.controller.ts`),
