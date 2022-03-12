@@ -6,6 +6,7 @@ const commandsCommand = require('./commands/commands')
 const makeCommand = require('./commands/make')
 const newCommand = require('./commands/new')
 const openCommand = require('./commands/open')
+const startCommand = require('./commands/start')
 const updateCommand = require('./commands/update')
 const versionCommand = require('./commands/version')
 
@@ -22,6 +23,11 @@ switch (process.argv[2]) {
 
     case 'open':
         openCommand()
+
+        break
+
+    case 'start':
+        startCommand()
 
         break
 
