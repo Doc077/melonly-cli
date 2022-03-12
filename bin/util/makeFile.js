@@ -1,23 +1,19 @@
-const { existsSync, mkdirSync, writeFileSync } = require('fs')
-const { dirname } = require('path')
-const { errorLine } = require('./errorLine')
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.makeFile = void 0;
+const fs_1 = require("fs");
+const path_1 = require("path");
+const errorLine_1 = require("./errorLine");
 const makeFile = (path, content) => {
-    if (!existsSync(path)) {
-        mkdirSync(dirname(path), {
+    if (!(0, fs_1.existsSync)(path)) {
+        (0, fs_1.mkdirSync)((0, path_1.dirname)(path), {
             recursive: true,
-        })
-    } else {
-        errorLine('File already exists')
-
-        process.exit(1)
+        });
     }
-
-    writeFileSync(path, content, (error) => {
-        if (error) {
-            errorLine('Cannot create new file')
-        }
-    })
-}
-
-exports.makeFile = makeFile
+    else {
+        (0, errorLine_1.errorLine)('File already exists');
+        process.exit(1);
+    }
+    (0, fs_1.writeFileSync)(path, content);
+};
+exports.makeFile = makeFile;

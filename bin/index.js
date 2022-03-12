@@ -1,54 +1,42 @@
 #!/usr/bin/env node
-
-const { errorLine } = require('./util/errorLine')
-
-const commandsCommand = require('./commands/commands')
-const makeCommand = require('./commands/make')
-const newCommand = require('./commands/new')
-const openCommand = require('./commands/open')
-const startCommand = require('./commands/start')
-const updateCommand = require('./commands/update')
-const versionCommand = require('./commands/version')
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const errorLine_1 = require("./util/errorLine");
+const commands_1 = __importDefault(require("./commands/commands"));
+const make_1 = __importDefault(require("./commands/make"));
+const new_1 = __importDefault(require("./commands/new"));
+const open_1 = __importDefault(require("./commands/open"));
+const start_1 = __importDefault(require("./commands/start"));
+const update_1 = __importDefault(require("./commands/update"));
+const version_1 = __importDefault(require("./commands/version"));
 switch (process.argv[2]) {
     case 'new':
-        newCommand()
-
-        break
-
+        (0, new_1.default)();
+        break;
     case 'make':
-        makeCommand()
-
-        break
-
+        (0, make_1.default)();
+        break;
     case 'open':
-        openCommand()
-
-        break
-
+        (0, open_1.default)();
+        break;
     case 'start':
-        startCommand()
-
-        break
-
+        (0, start_1.default)();
+        break;
     case 'update':
-        updateCommand()
-
-        break
-
+        (0, update_1.default)();
+        break;
     case 'version':
     case '--version':
     case '-v':
-        versionCommand()
-
-        break
-
+        (0, version_1.default)();
+        break;
     case 'commands':
     case undefined:
-        commandsCommand()
-
-        break
-
+        (0, commands_1.default)();
+        break;
     default:
-        errorLine(`Unknown command. Run 'melon commands' to get list of available commands.`)
+        (0, errorLine_1.errorLine)(`Unknown command. Run 'melon commands' to get list of available commands.`);
 }
