@@ -51,7 +51,5 @@ export default () => {
         process.exit(1)
     }
 
-    infoLine(
-        `Your project has been created. Run 'cd ${appName} && npm start' to start your application.`,
-    )
+    infoLine(`Your project has been created. Run 'cd ${appName} && npm start' to start your application.`)
 }

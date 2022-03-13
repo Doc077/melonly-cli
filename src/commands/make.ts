@@ -1,5 +1,4 @@
 import { join } from 'path'
-
 import { errorLine } from '../util/errorLine'
 import { infoLine } from '../util/infoLine'
 import { publishTemplate } from '../util/publishTemplate'
@@ -15,9 +14,7 @@ export default () => {
 
                 'channel',
                 {
-                    className: `${generatedName.charAt(0).toUpperCase()}${generatedName.slice(
-                        1,
-                    )}Channel`,
+                    className: `${generatedName.charAt(0).toUpperCase()}${generatedName.slice(1)}Channel`,
                     name: `${generatedName}`,
                 },
             )
@@ -30,9 +27,7 @@ export default () => {
 
                 'controller',
                 {
-                    className: `${generatedName.charAt(0).toUpperCase()}${generatedName.slice(
-                        1,
-                    )}Controller`,
+                    className: `${generatedName.charAt(0).toUpperCase()}${generatedName.slice(1)}Controller`,
                     path: `${generatedName}s`,
                     view: `${generatedName}`,
                 },
@@ -46,9 +41,7 @@ export default () => {
 
                 'email',
                 {
-                    className: `${generatedName.charAt(0).toUpperCase()}${generatedName.slice(
-                        1,
-                    )}Email`,
+                    className: `${generatedName.charAt(0).toUpperCase()}${generatedName.slice(1)}Email`,
                     view: `${generatedName}`,
                 },
             )
@@ -61,9 +54,7 @@ export default () => {
 
                 'service',
                 {
-                    className: `${generatedName.charAt(0).toUpperCase()}${generatedName.slice(
-                        1,
-                    )}Service`,
+                    className: `${generatedName.charAt(0).toUpperCase()}${generatedName.slice(1)}Service`,
                 },
             )
 
