@@ -13,8 +13,11 @@ export default () => {
             publishTemplate(
                 join(process.cwd(), 'src', 'broadcasting', `${generatedName}.channel.ts`),
 
-                'channel', {
-                    className: `${generatedName.charAt(0).toUpperCase()}${generatedName.slice(1)}Channel`,
+                'channel',
+                {
+                    className: `${generatedName.charAt(0).toUpperCase()}${generatedName.slice(
+                        1,
+                    )}Channel`,
                     name: `${generatedName}`,
                 },
             )
@@ -25,8 +28,11 @@ export default () => {
             publishTemplate(
                 join(process.cwd(), 'src', generatedName, `${generatedName}.controller.ts`),
 
-                'controller', {
-                    className: `${generatedName.charAt(0).toUpperCase()}${generatedName.slice(1)}Controller`,
+                'controller',
+                {
+                    className: `${generatedName.charAt(0).toUpperCase()}${generatedName.slice(
+                        1,
+                    )}Controller`,
                     path: `${generatedName}s`,
                     view: `${generatedName}`,
                 },
@@ -38,8 +44,11 @@ export default () => {
             publishTemplate(
                 join(process.cwd(), 'src', 'mail', `${generatedName}.email.ts`),
 
-                'email', {
-                    className: `${generatedName.charAt(0).toUpperCase()}${generatedName.slice(1)}Email`,
+                'email',
+                {
+                    className: `${generatedName.charAt(0).toUpperCase()}${generatedName.slice(
+                        1,
+                    )}Email`,
                     view: `${generatedName}`,
                 },
             )
@@ -50,8 +59,11 @@ export default () => {
             publishTemplate(
                 join(process.cwd(), 'src', generatedName, `${generatedName}.service.ts`),
 
-                'service', {
-                    className: `${generatedName.charAt(0).toUpperCase()}${generatedName.slice(1)}Service`,
+                'service',
+                {
+                    className: `${generatedName.charAt(0).toUpperCase()}${generatedName.slice(
+                        1,
+                    )}Service`,
                 },
             )
 
