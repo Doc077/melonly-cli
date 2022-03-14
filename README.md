@@ -5,9 +5,11 @@
 <!-- omit in toc -->
 ## Melonly CLI
 
-[![npm version](https://badge.fury.io/js/@melonly%2Fcli.svg)](https://www.npmjs.com/package/@melonly/cli)
+<a href="https://www.npmjs.com/package/@melonly/cli" target="_blank"><img src="https://img.shields.io/npm/v/@melonly/cli.svg" alt="Version"></a>
+<a href="https://www.npmjs.com/package/@melonly/cli" target="_blank"><img src="https://img.shields.io/npm/dm/@melonly/cli.svg" alt="Downloads"></a>
+<a href="https://www.npmjs.com/package/@melonly/cli" target="_blank"><img src="https://img.shields.io/npm/l/@melonly/cli.svg" alt="License"></a>
 
-This is the official CLI tool for [Melonly.js Framework](https://github.com/Doc077/melonly).
+The official CLI tool for [Melonly.js Framework](https://github.com/Doc077/melonly).
 
 **Table of Contents**
 
@@ -24,19 +26,21 @@ This is the official CLI tool for [Melonly.js Framework](https://github.com/Doc0
 
 ## Installation
 
+To create a new Melonly project you can use the CLI installer. First you only have to install `@melonly/cli` package.
+
 ```shell
 npm install -g @melonly/cli
 ```
 
-You can check the CLI version if properly installed. Then you'll be able to run `melon` commands:
+Then you can check the Melonly CLI version if it has been properly installed. Then you'll be able to run `melon` commands:
 
 ```shell
-# Display information about CLI version
+# Display Melonly CLI version
 
 melon -v
 ```
 
-To create new Melonly project run the `new` command in your directory:
+To create new project run the `new` command in your directory:
 
 ```shell
 melon new <project-name>
