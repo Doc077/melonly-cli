@@ -60,6 +60,15 @@ export default () => {
 
             break
 
+        case 'test':
+            publishTemplate(
+                join(process.cwd(), 'tests', generatedName, `${generatedName}.test.ts`),
+
+                'test', { name: `${generatedName}` },
+            )
+
+            break
+
         default:
             errorLine(`Unknown generator command '${generatedType}'`)
 
