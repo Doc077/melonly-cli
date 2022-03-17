@@ -1,20 +1,24 @@
-import { join } from 'path'
 import { readFileSync } from 'fs'
-import { makeFile } from './makeFile'
+import { join } from 'path'
 import { errorLine } from './errorLine'
+import { makeFile } from './makeFile'
 
-export const publishTemplate = (path: string, template: string, variables: { [key: string]: string }) => {
+export interface ViewVariables {
+    [key: string]: any
+}
+
+export const publishTemplate = (path: string, template: string, variables: ViewVariables) => {
     try {
-        let data = readFileSync(join(__dirname, '..', '..', 'assets', 'templates', `${template}.txt`)).toString()
+        let content = readFileSync(join(__dirname, '..', '..', 'assets', 'templates', `${template}.txt`)).toString()
 
-        for (const expression of data.matchAll(/([^@])\{\{ *([^ ]*?) *\}\}/g) ?? []) {
+        for (const expression of content.matchAll(/([^@])\{\{ *([^ ]*?) *\}\}/g) ?? []) {
             let variableValue = variables[expression[2]]
 
-            data = data.replace(expression[0], expression[1] + variableValue)
+            content = content.replace(expression[0], expression[1] + variableValue)
         }
 
-        makeFile(path, data)
+        makeFile(path, content)
     } catch (error) {
-        errorLine('Cannot create new file')
+        errorLine('Cannot create a file')
     }
 }

@@ -1,10 +1,15 @@
 import { copyFileSync, readFileSync, writeFileSync } from 'fs'
 import { join } from 'path'
-
+import { errorLine } from '../util/errorLine'
+import { infoLine } from '../util/infoLine'
 import { removeDirectory } from '../util/removeDirectory'
 import { runCommand } from '../util/runCommand'
-import { infoLine } from '../util/infoLine'
-import { errorLine } from '../util/errorLine'
+
+const failInstallation = () => {
+    errorLine('Installation failed')
+
+    process.exit(1)
+}
 
 export default () => {
     const appName = process.argv[3]
@@ -12,9 +17,7 @@ export default () => {
     infoLine(`Creating new project '${appName}'...`)
 
     if (!runCommand(`git clone https://github.com/Doc077/melonly.git ${appName}`)) {
-        errorLine('Installation failed')
-
-        process.exit(1)
+        failInstallation()
     }
 
     infoLine('Installing packages...')
@@ -22,9 +25,7 @@ export default () => {
     process.chdir(appName)
 
     if (!runCommand('npm install')) {
-        errorLine('Installation failed')
-
-        process.exit(1)
+        failInstallation()
     }
 
     removeDirectory(join(process.cwd(), '.git'))
@@ -40,15 +41,11 @@ export default () => {
 
         writeFileSync(join(process.cwd(), 'package.json'), packageData, (error: any): any => {
             if (error) {
-                errorLine('Installation failed')
-
-                process.exit(1)
+                failInstallation()
             }
         })
     } catch (error) {
-        errorLine('Installation failed')
-
-        process.exit(1)
+        failInstallation()
     }
 
     infoLine(`Your project has been created. Run 'cd ${appName} && npm start' to start your application.`)
