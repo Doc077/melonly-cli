@@ -20,7 +20,7 @@ The official CLI tool for [Melonly.js Framework](https://github.com/Doc077/melon
 
 ## Requirements
 
-- Node.js v15
+- Node.js 15+
 - `npm` installed
 
 
