@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-import { errorLine } from './util/errorLine'
-
 import commandsCommand from './commands/commands'
 import makeCommand from './commands/make'
 import newCommand from './commands/new'
@@ -9,6 +7,8 @@ import openCommand from './commands/open'
 import startCommand from './commands/start'
 import updateCommand from './commands/update'
 import versionCommand from './commands/version'
+
+import { errorLine } from './util/errorLine'
 
 const command = process.argv[2]
 
@@ -38,9 +38,9 @@ switch (command) {
 
         break
 
-    case 'version':
-    case '--version':
     case '-v':
+    case '--version':
+    case 'version':
         versionCommand()
 
         break
@@ -52,5 +52,5 @@ switch (command) {
         break
 
     default:
-        errorLine(`Invalid command. Run 'melon commands' to get list of available commands.`)
+        errorLine('Invalid command. Run \'melon commands\' to get list of available commands.')
 }
