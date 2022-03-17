@@ -62,7 +62,7 @@ export default () => {
 
         case 'test':
             publishTemplate(
-                join(process.cwd(), 'tests', generatedName, `${generatedName}.test.ts`),
+                join(process.cwd(), 'tests', `${generatedName}.test.ts`),
 
                 'test', { name: `${generatedName}` },
             )
