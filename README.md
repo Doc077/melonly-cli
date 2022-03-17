@@ -20,13 +20,13 @@ The official CLI tool for [Melonly.js Framework](https://github.com/Doc077/melon
 
 ## Requirements
 
-- Node.js v16.4.2+
+- Node.js v15
 - `npm` installed
 
 
 ## Installation
 
-To create a new Melonly project you can use the CLI installer. First you only have to install `@melonly/cli` package.
+To create new Melonly project you can use the CLI installer. You only have to install `@melonly/cli` package:
 
 ```shell
 npm install -g @melonly/cli
