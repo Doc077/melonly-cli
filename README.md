@@ -5,9 +5,9 @@
 <!-- omit in toc -->
 ## Melonly CLI
 
-<a href="https://www.npmjs.com/package/@melonly/cli" target="_blank"><img src="https://img.shields.io/npm/v/@melonly/cli.svg?style=flat-square&labelColor=333842&color=fd6f71" alt="Latest Version"></a>
-<a href="https://www.npmjs.com/package/@melonly/cli" target="_blank"><img src="https://img.shields.io/npm/dt/@melonly/cli.svg?style=flat-square&labelColor=333842&color=fd6f71" alt="Downloads"></a>
-<a href="https://www.npmjs.com/package/@melonly/cli" target="_blank"><img src="https://img.shields.io/npm/l/@melonly/cli.svg?style=flat-square&labelColor=333842&color=fd6f71" alt="License"></a>
+<a href="https://www.npmjs.com/package/@melonly/cli" target="_blank"><img src="https://img.shields.io/npm/v/@melonly/cli.svg?style=flat-square&labelColor=333842&color=10b981" alt="Latest Version"></a>
+<a href="https://www.npmjs.com/package/@melonly/cli" target="_blank"><img src="https://img.shields.io/npm/dt/@melonly/cli.svg?style=flat-square&labelColor=333842&color=10b981" alt="Downloads"></a>
+<a href="https://www.npmjs.com/package/@melonly/cli" target="_blank"><img src="https://img.shields.io/npm/l/@melonly/cli.svg?style=flat-square&labelColor=333842&color=10b981" alt="License"></a>
 
 The official CLI tool for [Melonly.js Framework](https://github.com/Doc077/melonly).
 
