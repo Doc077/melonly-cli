@@ -9,7 +9,7 @@
 <a href="https://www.npmjs.com/package/@melonly/cli" target="_blank"><img src="https://img.shields.io/npm/dt/@melonly/cli.svg?style=flat-square&labelColor=333842&color=10b981" alt="Downloads"></a>
 <a href="https://www.npmjs.com/package/@melonly/cli" target="_blank"><img src="https://img.shields.io/npm/l/@melonly/cli.svg?style=flat-square&labelColor=333842&color=10b981" alt="License"></a>
 
-The official CLI tool for [Melonly.js Framework](https://github.com/Doc077/melonly).
+The official command line tool for [Melonly.js Framework](https://github.com/Doc077/melonly).
 
 **Table of Contents**
 
@@ -25,17 +25,15 @@ The official CLI tool for [Melonly.js Framework](https://github.com/Doc077/melon
 
 ## Installation
 
-To create new Melonly project you can use the CLI installer. You only have to install `@melonly/cli` package:
+To create new Melonly project we recommend to use the CLI installer. You only have to install `@melonly/cli` package:
 
 ```shell
 npm install -g @melonly/cli
 ```
 
-Then you can check the Melonly CLI version if it has been properly installed. Then you'll be able to run `melon` commands:
+You can check the Melonly CLI version if it has been properly installed:
 
 ```shell
-# Display Melonly CLI version
-
 melon -v
 ```
 
