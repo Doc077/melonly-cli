@@ -1,5 +1,5 @@
 import open from 'open'
 
 export default () => {
-    open(process.argv[3])
+  open(process.argv[3])
 }

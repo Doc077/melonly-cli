@@ -1,5 +1,5 @@
 import { runCommand } from '../util/runCommand'
 
 export default () => {
-    runCommand('npm start')
+  runCommand('npm start')
 }

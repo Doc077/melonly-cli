@@ -13,44 +13,44 @@ import { errorLine } from './util/errorLine'
 const command = process.argv[2]
 
 switch (command) {
-    case 'new':
-        newCommand()
+  case 'new':
+    newCommand()
 
-        break
+    break
 
-    case 'make':
-        makeCommand()
+  case 'make':
+    makeCommand()
 
-        break
+    break
 
-    case 'open':
-        openCommand()
+  case 'open':
+    openCommand()
 
-        break
+    break
 
-    case 'start':
-        startCommand()
+  case 'start':
+    startCommand()
 
-        break
+    break
 
-    case 'update':
-        updateCommand()
+  case 'update':
+    updateCommand()
 
-        break
+    break
 
-    case '-v':
-    case '--version':
-    case 'version':
-        versionCommand()
+  case '-v':
+  case '--version':
+  case 'version':
+    versionCommand()
 
-        break
+    break
 
-    case 'commands':
-    case undefined:
-        commandsCommand()
+  case 'commands':
+  case undefined:
+    commandsCommand()
 
-        break
+    break
 
-    default:
-        errorLine('Invalid command. Run \'melon commands\' to get list of available commands.')
+  default:
+    errorLine("Invalid command. Run 'melon commands' to get list of available commands.")
 }
