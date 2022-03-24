@@ -7,6 +7,18 @@ export default () => {
   const generatedType = process.argv[3]
   const generatedName = process.argv[4]
 
+  if (!generatedType) {
+    errorLine('File type is required')
+
+    return
+  }
+
+  if (!generatedName) {
+    errorLine('File name is required')
+
+    return
+  }
+
   switch (generatedType) {
     case 'channel':
       publishTemplate(

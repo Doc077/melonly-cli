@@ -32,7 +32,7 @@ const stagePackagesInstall = (appName: string): void => {
 }
 
 const stageFilesPrepare = (appName: string): void => {
-  infoLine('Extracting new files...')
+  infoLine('Copying new files...')
 
   copyFileSync(join(process.cwd(), '.env.example'), join(process.cwd(), '.env'))
 
@@ -41,11 +41,7 @@ const stageFilesPrepare = (appName: string): void => {
 
     packageData = packageData.replace('"name": "melonly"', `"name": "${appName}"`)
 
-    writeFileSync(join(process.cwd(), 'package.json'), packageData, (error: any): any => {
-      if (error) {
-        failInstallation()
-      }
-    })
+    writeFileSync(join(process.cwd(), 'package.json'), packageData)
   } catch (error) {
     failInstallation()
   }
@@ -53,6 +49,12 @@ const stageFilesPrepare = (appName: string): void => {
 
 export default () => {
   const appName = process.argv[3]
+
+  if (!appName) {
+    errorLine('App name is required')
+
+    return
+  }
 
   stageGitClone(appName)
 
