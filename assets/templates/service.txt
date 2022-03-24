@@ -2,7 +2,7 @@ import { Injectable } from '@melonly/core'
 
 @Injectable()
 export class {{ className }} {
-    public getMessage(): string {
-        return 'Hello World!'
-    }
+  public getMessage(): string {
+    return 'Hello World!'
+  }
 }

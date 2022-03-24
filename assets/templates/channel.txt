@@ -2,7 +2,7 @@ import { BroadcastChannel, ChannelInterface } from '@melonly/core'
 
 @BroadcastChannel('{{ name }}/:id')
 export class {{ className }} implements ChannelInterface {
-    public userAuthorized(): boolean {
-        return true
-    }
+  public userAuthorized(): boolean {
+    return true
+  }
 }

@@ -2,10 +2,10 @@ import { Controller, Get, Request, Response, ViewResponse } from '@melonly/core'
 
 @Controller()
 export class {{ className }} {
-    constructor(private request: Request, private response: Response) {}
+  constructor(private request: Request, private response: Response) {}
 
-    @Get('/{{ path }}')
-    public index(): ViewResponse {
-        return this.response.render('{{ view }}')
-    }
+  @Get('/{{ path }}')
+  public index(): ViewResponse {
+    return this.response.render('{{ view }}')
+  }
 }
