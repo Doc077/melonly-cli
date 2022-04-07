@@ -13,36 +13,36 @@ The official command line tool for [Melonly.js Framework](https://github.com/Doc
 
 **Table of Contents**
 
-- [Getting Started](#getting-started)
 - [Requirements](#requirements)
+- [Installation](#installation)
 - [License](#license)
 - [Information](#information)
 
-## Getting Started
+## Requirements
 
-To create new Melonly project you can use the CLI installer. You only have to install `@melonly/cli` package:
+In order to use Melonly, your environment has to met few requirements:
+
+- Node.js 16+
+- [`npm`](https://nodejs.org/en/download/) and [`git`](https://git-scm.com) installed
+
+## Installation
 
 ```shell
 npm install -g @melonly/cli
 ```
 
-## Requirements
-
-In order to use Melonly, your environment has to satisfy these requirements:
-
-- Node.js 15+
-- [`npm`](https://nodejs.org/en/download/) installed
-
 ## License
 
 Melonly is an open-source framework licensed under the [MIT License](LICENSE).
 
-If you discovered a bug or security vulnerability please open an issue / pull request in the repository or email me: dom.rajkowski@gmail.com.
+If you discovered any bug or security issue please open new issue / pull request in the [repository](https://github.com/Doc077/melonly-cli) or email me: dom.rajkowski@gmail.com.
 
 ## Information
 
-Logo: [Created by Freepik - Flaticon](https://www.flaticon.com/free-icons/watermelon)
+Logo [created by Freepik - Flaticon](https://www.flaticon.com/free-icons/watermelon)
 
-Documentation: [https://melonly.pl](https://melonly.pl)
+Documentation: [melonly.pl](https://melonly.pl)
 
-Author: [Doc077](https://github.com/Doc077)
+GitHub repository: [github.com/Doc077/melonly-cli](https://github.com/Doc077/melonly-cli)
+
+by [Doc077](https://github.com/Doc077)
