@@ -1,5 +1,5 @@
 import { readFileSync } from 'fs'
-import { join } from 'path'
+import { join as joinPath } from 'path'
 import { errorLine } from './errorLine'
 import { makeFile } from './makeFile'
 
@@ -9,7 +9,7 @@ export interface ViewVariables {
 
 export const publishTemplate = (path: string, template: string, variables: ViewVariables) => {
   try {
-    let content = readFileSync(join(__dirname, '..', '..', 'assets', 'templates', `${template}.txt`)).toString()
+    let content = readFileSync(joinPath(__dirname, '..', '..', 'assets', 'templates', `${template}.txt`)).toString()
 
     for (const expression of content.matchAll(/([^@])\{\{ *([^ ]*?) *\}\}/g) ?? []) {
       let variableValue = variables[expression[2]]

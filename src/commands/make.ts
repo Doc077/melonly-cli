@@ -1,4 +1,4 @@
-import { join } from 'path'
+import { join as joinPath } from 'path'
 import { errorLine } from '../util/errorLine'
 import { infoLine } from '../util/infoLine'
 import { publishTemplate } from '../util/publishTemplate'
@@ -22,7 +22,7 @@ export default () => {
   switch (generatedType) {
     case 'channel':
       publishTemplate(
-        join(process.cwd(), 'src', 'broadcasting', `${generatedName}.channel.ts`),
+        joinPath(process.cwd(), 'src', 'broadcasting', `${generatedName}.channel.ts`),
 
         'channel',
         {
@@ -35,7 +35,7 @@ export default () => {
 
     case 'controller':
       publishTemplate(
-        join(process.cwd(), 'src', generatedName, `${generatedName}.controller.ts`),
+        joinPath(process.cwd(), 'src', generatedName, `${generatedName}.controller.ts`),
 
         'controller',
         {
@@ -49,7 +49,7 @@ export default () => {
 
     case 'email':
       publishTemplate(
-        join(process.cwd(), 'src', 'mail', `${generatedName}.email.ts`),
+        joinPath(process.cwd(), 'src', 'mail', `${generatedName}.email.ts`),
 
         'email',
         {
@@ -62,7 +62,7 @@ export default () => {
 
     case 'service':
       publishTemplate(
-        join(process.cwd(), 'src', generatedName, `${generatedName}.service.ts`),
+        joinPath(process.cwd(), 'src', generatedName, `${generatedName}.service.ts`),
 
         'service',
         {
@@ -74,7 +74,7 @@ export default () => {
 
     case 'test':
       publishTemplate(
-        join(process.cwd(), 'tests', `${generatedName}.test.ts`),
+        joinPath(process.cwd(), 'tests', `${generatedName}.test.ts`),
 
         'test',
         { name: `${generatedName}` },

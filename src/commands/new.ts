@@ -1,5 +1,5 @@
 import { copyFileSync, readFileSync, writeFileSync } from 'fs'
-import { join } from 'path'
+import { join as joinPath } from 'path'
 import { errorLine } from '../util/errorLine'
 import { infoLine } from '../util/infoLine'
 import { removeDirectory } from '../util/removeDirectory'
@@ -28,20 +28,20 @@ const stagePackagesInstall = (appName: string): void => {
     failInstallation()
   }
 
-  removeDirectory(join(process.cwd(), '.git'))
+  removeDirectory(joinPath(process.cwd(), '.git'))
 }
 
 const stageFilesPrepare = (appName: string): void => {
   infoLine('Copying new files...')
 
-  copyFileSync(join(process.cwd(), '.env.example'), join(process.cwd(), '.env'))
+  copyFileSync(joinPath(process.cwd(), '.env.example'), joinPath(process.cwd(), '.env'))
 
   try {
-    let packageData = readFileSync(join(process.cwd(), 'package.json')).toString()
+    let packageData = readFileSync(joinPath(process.cwd(), 'package.json')).toString()
 
     packageData = packageData.replace('"name": "melonly"', `"name": "${appName}"`)
 
-    writeFileSync(join(process.cwd(), 'package.json'), packageData)
+    writeFileSync(joinPath(process.cwd(), 'package.json'), packageData)
   } catch (error) {
     failInstallation()
   }

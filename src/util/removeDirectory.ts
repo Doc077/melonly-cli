@@ -1,5 +1,5 @@
 import { existsSync, statSync, unlinkSync, rmdirSync, readdirSync } from 'fs'
-import { join } from 'path'
+import { join as joinPath } from 'path'
 
 export const removeDirectory = (path: string) => {
   if (existsSync(path)) {
@@ -7,9 +7,11 @@ export const removeDirectory = (path: string) => {
 
     if (files.length > 0) {
       files.forEach((filename) => {
-        const filePath = join(path, filename)
+        const filePath = joinPath(path, filename)
 
-        statSync(filePath).isDirectory() ? removeDirectory(filePath) : unlinkSync(filePath)
+        statSync(filePath).isDirectory()
+          ? removeDirectory(filePath)
+          : unlinkSync(filePath)
       })
     }
 
