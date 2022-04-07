@@ -15,8 +15,10 @@ const stageGitClone = (appName: string): void => {
   infoLine(`Creating new project '${appName}'...`)
 
   if (!runCommand(`git clone https://github.com/Doc077/melonly.git ${appName}`)) {
-    failInstallation()
+    failInstallation('Connection to GitHub failed')
   }
+
+  removeDirectory(joinPath(process.cwd(), '.git'))
 }
 
 const stagePackagesInstall = (appName: string): void => {
@@ -25,10 +27,8 @@ const stagePackagesInstall = (appName: string): void => {
   process.chdir(appName)
 
   if (!runCommand('npm install')) {
-    failInstallation()
+    failInstallation('Cannot install packages')
   }
-
-  removeDirectory(joinPath(process.cwd(), '.git'))
 }
 
 const stageFilesPrepare = (appName: string): void => {
@@ -48,6 +48,8 @@ const stageFilesPrepare = (appName: string): void => {
 }
 
 const stageInitRepository = () => {
+  infoLine('Initializing Git repository...')
+
   if (!runCommand('git init')) {
     failInstallation('You have to install Git CLI to init a repository')
   }
