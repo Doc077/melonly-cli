@@ -5,8 +5,8 @@ import { infoLine } from '../util/infoLine'
 import { removeDirectory } from '../util/removeDirectory'
 import { runCommand } from '../util/runCommand'
 
-const failInstallation = (): void => {
-  errorLine('Installation failed')
+const failInstallation = (message?: string): void => {
+  errorLine(message ?? 'Installation failed')
 
   process.exit(1)
 }
@@ -47,6 +47,12 @@ const stageFilesPrepare = (appName: string): void => {
   }
 }
 
+const stageInitRepository = () => {
+  if (!runCommand('git init')) {
+    failInstallation('You have to install Git CLI to init a repository')
+  }
+}
+
 export default () => {
   const appName = process.argv[3]
 
@@ -61,6 +67,10 @@ export default () => {
   stagePackagesInstall(appName)
 
   stageFilesPrepare(appName)
+
+  if (process.argv[4] === '--git') {
+    stageInitRepository()
+  }
 
   infoLine(`Your project has been created. Run 'cd ${appName} && npm start' to start your application.`)
 }
