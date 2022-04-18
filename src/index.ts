@@ -58,5 +58,5 @@ switch (command) {
     break
 
   default:
-    errorLine("Invalid command. Run 'melon commands' to get list of available commands.")
+    errorLine(`Invalid command. Run 'melon commands' to get list of available commands.`)
 }

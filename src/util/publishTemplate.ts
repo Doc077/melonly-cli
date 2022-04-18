@@ -8,10 +8,12 @@ export interface ViewVariables {
 }
 
 export const publishTemplate = (path: string, template: string, variables: ViewVariables) => {
+  const variablePattern = /([^@])\{\{ *([^ ]*?) *\}\}/g
+
   try {
     let content = readFileSync(joinPath(__dirname, '..', '..', 'assets', 'templates', `${template}.txt`)).toString()
 
-    for (const expression of content.matchAll(/([^@])\{\{ *([^ ]*?) *\}\}/g) ?? []) {
+    for (const expression of content.matchAll(variablePattern) ?? []) {
       let variableValue = variables[expression[2]]
 
       content = content.replace(expression[0], expression[1] + variableValue)
@@ -19,6 +21,6 @@ export const publishTemplate = (path: string, template: string, variables: ViewV
 
     makeFile(path, content)
   } catch (error) {
-    errorLine('Cannot create a file')
+    errorLine('Cannot publish a new file')
   }
 }
