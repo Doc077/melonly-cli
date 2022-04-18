@@ -2,6 +2,7 @@
 
 import commandsCommand from './commands/commands'
 import makeCommand from './commands/make'
+import migrateCommand from './commands/migrate'
 import newCommand from './commands/new'
 import openCommand from './commands/open'
 import startCommand from './commands/start'
@@ -20,6 +21,11 @@ switch (command) {
 
   case 'make':
     makeCommand()
+
+    break
+
+  case 'migrate':
+    migrateCommand()
 
     break
 
