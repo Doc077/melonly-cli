@@ -6,7 +6,7 @@ export const removeDirectory = (path: string) => {
     const files = readdirSync(path)
 
     if (files.length > 0) {
-      files.forEach((filename) => {
+      files.forEach((filename: string) => {
         const filePath = joinPath(path, filename)
 
         statSync(filePath).isDirectory()
