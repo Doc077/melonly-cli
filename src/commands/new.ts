@@ -12,17 +12,17 @@ const failInstallation = (message?: string): void => {
 }
 
 const stageGitClone = (appName: string): void => {
-  infoLine(`Creating new project '${appName}'...`)
+  infoLine(`✓ Creating new project '${appName}'...`)
 
   if (!runCommand(`git clone https://github.com/Doc077/melonly.git ${appName}`)) {
-    failInstallation('Connection to GitHub failed')
+    failInstallation('Connection failed')
   }
 
   removeDirectory(joinPath(process.cwd(), '.git'))
 }
 
 const stagePackagesInstall = (appName: string): void => {
-  infoLine('Installing packages...')
+  infoLine('✓ Installing packages...')
 
   process.chdir(appName)
 
@@ -32,14 +32,16 @@ const stagePackagesInstall = (appName: string): void => {
 }
 
 const stageFilesPrepare = (appName: string): void => {
-  infoLine('Copying new files...')
+  infoLine('✓ Copying new files...')
 
   copyFileSync(joinPath(process.cwd(), '.env.example'), joinPath(process.cwd(), '.env'))
 
   try {
-    let packageData = readFileSync(joinPath(process.cwd(), 'package.json')).toString()
+    const packagePath = joinPath(process.cwd(), 'package.json')
 
-    packageData = packageData.replace('"name": "melonly"', `"name": "${appName}"`)
+    const packageData = readFileSync(packagePath)
+      .toString()
+      .replace('"name": "melonly"', `"name": "${appName}"`)
 
     writeFileSync(joinPath(process.cwd(), 'package.json'), packageData)
   } catch (error) {
@@ -48,7 +50,7 @@ const stageFilesPrepare = (appName: string): void => {
 }
 
 const stageInitRepository = () => {
-  infoLine('Initializing Git repository...')
+  infoLine('✓ Initializing Git repository...')
 
   if (!runCommand('git init')) {
     failInstallation('You have to install Git CLI to init a repository')
@@ -74,5 +76,5 @@ export default () => {
     stageInitRepository()
   }
 
-  infoLine(`Your project has been created. Run 'cd ${appName} && npm start' to start your application.`)
+  infoLine(`✓ Your project has been created. Run 'cd ${appName} && npm start' to start your application.`)
 }
