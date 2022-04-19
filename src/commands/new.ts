@@ -1,5 +1,6 @@
 import { copyFileSync, readFileSync, writeFileSync } from 'fs'
 import { join as joinPath } from 'path'
+import { bgGreenBright } from 'cli-color'
 import { errorLine } from '../util/errorLine'
 import { infoLine } from '../util/infoLine'
 import { removeDirectory } from '../util/removeDirectory'
@@ -12,7 +13,7 @@ const failInstallation = (message?: string): void => {
 }
 
 const stageGitClone = (appName: string): void => {
-  infoLine(`✓ Creating new project '${appName}'...`)
+  infoLine(`[${bgGreenBright('   ')}         ] ✓ Creating new project '${appName}'...`)
 
   if (!runCommand(`git clone https://github.com/Doc077/melonly.git ${appName}`)) {
     failInstallation('Connection failed')
@@ -22,7 +23,7 @@ const stageGitClone = (appName: string): void => {
 }
 
 const stagePackagesInstall = (appName: string): void => {
-  infoLine('✓ Installing packages...')
+  infoLine(`[${bgGreenBright('      ')}      ] ✓ Installing packages...`)
 
   process.chdir(appName)
 
@@ -32,7 +33,7 @@ const stagePackagesInstall = (appName: string): void => {
 }
 
 const stageFilesPrepare = (appName: string): void => {
-  infoLine('✓ Copying new files...')
+  infoLine(`[${bgGreenBright('         ')}   ] ✓ Copying new files...`)
 
   copyFileSync(joinPath(process.cwd(), '.env.example'), joinPath(process.cwd(), '.env'))
 
@@ -50,7 +51,7 @@ const stageFilesPrepare = (appName: string): void => {
 }
 
 const stageInitRepository = () => {
-  infoLine('✓ Initializing Git repository...')
+  infoLine(`[${bgGreenBright('            ')}] ✓ Initializing Git repository...`)
 
   if (!runCommand('git init')) {
     failInstallation('You have to install Git CLI to init a repository')
@@ -76,5 +77,5 @@ export default () => {
     stageInitRepository()
   }
 
-  infoLine(`Your project has been created. Run 'cd ${appName} && npm start' to start your application.`)
+  infoLine(`Your project has been created. Run 'cd ${appName} && npm start' to launch your application.`)
 }
