@@ -76,5 +76,5 @@ export default () => {
     stageInitRepository()
   }
 
-  infoLine(`✓ Your project has been created. Run 'cd ${appName} && npm start' to start your application.`)
+  infoLine(`Your project has been created. Run 'cd ${appName} && npm start' to start your application.`)
 }

@@ -1,5 +1,5 @@
-import cli from 'cli-color'
+import { green } from 'cli-color'
 
 export const infoLine = (text: string) => {
-  console.log(cli.green(text))
+  console.log(green(text))
 }

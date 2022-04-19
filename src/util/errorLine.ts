@@ -1,5 +1,5 @@
-import cli from 'cli-color'
+import { redBright } from 'cli-color'
 
 export const errorLine = (text: string) => {
-  console.error(cli.redBright(text))
+  console.error(redBright(text))
 }
