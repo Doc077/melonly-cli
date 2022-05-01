@@ -1,11 +1,11 @@
-import { Email } from '@melonly/core'
+import { Email, EmailTemplate } from '@melonly/core'
 
 export class {{ className }} extends Email {
   public subject(): string {
     return 'Welcome'
   }
 
-  public build(): string {
+  public build(): EmailTemplate {
     return this.fromTemplate('mail.{{ view }}')
   }
 }
