@@ -1,0 +1,13 @@
+import { Column, Entity, Model } from '@melonly/core'
+
+@Model()
+export class {{ className }} extends Entity {
+  @Column()
+  public id: number
+
+  @Column()
+  public name: string
+
+  @Column()
+  public createdAt: Date
+}

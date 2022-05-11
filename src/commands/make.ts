@@ -27,7 +27,7 @@ export default () => {
         'channel',
         {
           className: `${generatedName.charAt(0).toUpperCase()}${generatedName.slice(1)}Channel`,
-          name: `${generatedName}`,
+          name: generatedName,
         },
       )
 
@@ -41,7 +41,7 @@ export default () => {
         {
           className: `${generatedName.charAt(0).toUpperCase()}${generatedName.slice(1)}Controller`,
           path: `${generatedName}s`,
-          view: `${generatedName}`,
+          view: generatedName,
         },
       )
 
@@ -54,7 +54,19 @@ export default () => {
         'email',
         {
           className: `${generatedName.charAt(0).toUpperCase()}${generatedName.slice(1)}Email`,
-          view: `${generatedName}`,
+          view: generatedName,
+        },
+      )
+
+      break
+
+    case 'model':
+      publishTemplate(
+        joinPath(process.cwd(), 'src', 'models', `${generatedName}.model.ts`),
+
+        'model',
+        {
+          className: `${generatedName.charAt(0).toUpperCase()}${generatedName.slice(1)}`,
         },
       )
 
@@ -74,10 +86,9 @@ export default () => {
 
     case 'test':
       publishTemplate(
-        joinPath(process.cwd(), 'tests', `${generatedName}.test.ts`),
-
-        'test',
-        { name: `${generatedName}` },
+        joinPath(process.cwd(), 'tests', `${generatedName}.test.ts`), 'test', {
+          name: generatedName
+        },
       )
 
       break
