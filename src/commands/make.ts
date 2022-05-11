@@ -22,7 +22,7 @@ export default () => {
   switch (generatedType) {
     case 'channel':
       publishTemplate(
-        joinPath(process.cwd(), 'src', 'broadcasting', `${generatedName}.channel.ts`),
+        joinPath(process.cwd(), 'src', 'channels', `${generatedName}.channel.ts`),
 
         'channel',
         {
@@ -35,7 +35,7 @@ export default () => {
 
     case 'controller':
       publishTemplate(
-        joinPath(process.cwd(), 'src', generatedName, `${generatedName}.controller.ts`),
+        joinPath(process.cwd(), 'src', 'controllers', `${generatedName}.controller.ts`),
 
         'controller',
         {
@@ -62,7 +62,7 @@ export default () => {
 
     case 'service':
       publishTemplate(
-        joinPath(process.cwd(), 'src', generatedName, `${generatedName}.service.ts`),
+        joinPath(process.cwd(), 'src', 'services', `${generatedName}.service.ts`),
 
         'service',
         {
