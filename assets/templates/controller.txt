@@ -2,7 +2,7 @@ import { Controller, Get, RenderResponse, Request, Response } from '@melonly/cor
 
 @Controller()
 export class {{ className }} {
-  constructor(private request: Request, private response: Response) {}
+  constructor(private request: Request, private response: Response) { }
 
   @Get('/{{ path }}')
   public index(): RenderResponse {
