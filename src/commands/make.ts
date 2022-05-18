@@ -49,7 +49,7 @@ export default () => {
 
     case 'email':
       publishTemplate(
-        joinPath(process.cwd(), 'src', 'mail', `${generatedName}.email.ts`),
+        joinPath(process.cwd(), 'src', 'emails', `${generatedName}.email.ts`),
 
         'email',
         {
