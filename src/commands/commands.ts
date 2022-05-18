@@ -1,21 +1,30 @@
 import { infoLine } from '../utils/infoLine'
 
 export default () => {
-  infoLine('Command list:')
+  infoLine('Available commands:')
 
   console.table([
+    {
+      command: 'commands',
+      description: 'Get available CLI commands',
+    },
     {
       command: 'make',
       description: 'Generate new file',
       arguments: '{type} {name}',
     },
     {
-      command: 'commands',
-      description: 'Get available CLI commands',
+      command: 'migrate',
+      description: 'Run database migrations',
     },
     {
       command: 'new',
-      description: 'Create new Melonly project',
+      description: 'Create a new Melonly project',
+      arguments: '{name}',
+    },
+    {
+      command: 'start',
+      description: 'Run application',
     },
     {
       command: 'update',
