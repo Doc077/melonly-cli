@@ -58,6 +58,12 @@ export default () => {
         },
       )
 
+      publishTemplate(
+        joinPath(process.cwd(), 'views', 'emails', `${generatedName}.melon.html`),
+
+        'email-view',
+      )
+
       break
 
     case 'model':

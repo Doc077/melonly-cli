@@ -7,7 +7,7 @@ export interface ViewVariables {
   [key: string]: any
 }
 
-export const publishTemplate = (path: string, template: string, variables: Record<string, any>) => {
+export const publishTemplate = (path: string, template: string, variables: Record<string, any> = {}) => {
   const variablePattern = /([^@])\{\{ *([^ ]*?) *\}\}/g
 
   try {

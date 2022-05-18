@@ -6,6 +6,6 @@ export class {{ className }} extends Email {
   }
 
   public build(): EmailTemplate {
-    return this.fromTemplate('mail.{{ view }}')
+    return this.fromTemplate('emails.{{ view }}')
   }
 }
