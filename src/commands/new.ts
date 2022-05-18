@@ -1,10 +1,10 @@
 import { copyFileSync, readFileSync, writeFileSync } from 'fs'
 import { join as joinPath } from 'path'
 import { bgGreenBright } from 'cli-color'
-import { errorLine } from '../util/errorLine'
-import { infoLine } from '../util/infoLine'
-import { removeDirectory } from '../util/removeDirectory'
-import { runCommand } from '../util/runCommand'
+import { errorLine } from '../utils/errorLine'
+import { infoLine } from '../utils/infoLine'
+import { removeDirectory } from '../utils/removeDirectory'
+import { runCommand } from '../utils/runCommand'
 
 const failInstallation = (message?: string): void => {
   errorLine(message ?? 'Installation failed')

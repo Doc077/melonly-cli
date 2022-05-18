@@ -1,4 +1,4 @@
-import { infoLine } from '../util/infoLine'
+import { infoLine } from '../utils/infoLine'
 
 export default () => {
   infoLine('Running migrations...')

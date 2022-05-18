@@ -1,7 +1,7 @@
 import { join as joinPath } from 'path'
-import { errorLine } from '../util/errorLine'
-import { infoLine } from '../util/infoLine'
-import { publishTemplate } from '../util/publishTemplate'
+import { errorLine } from '../utils/errorLine'
+import { infoLine } from '../utils/infoLine'
+import { publishTemplate } from '../utils/publishTemplate'
 
 export default () => {
   const generatedType = process.argv[3]

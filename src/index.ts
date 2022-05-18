@@ -9,7 +9,7 @@ import startCommand from './commands/start'
 import updateCommand from './commands/update'
 import versionCommand from './commands/version'
 
-import { errorLine } from './util/errorLine'
+import { errorLine } from './utils/errorLine'
 
 const command = process.argv[2]
 

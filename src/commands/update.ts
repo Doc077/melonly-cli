@@ -1,6 +1,6 @@
-import { errorLine } from '../util/errorLine'
-import { infoLine } from '../util/infoLine'
-import { runCommand } from '../util/runCommand'
+import { errorLine } from '../utils/errorLine'
+import { infoLine } from '../utils/infoLine'
+import { runCommand } from '../utils/runCommand'
 
 export default () => {
   if (!runCommand('npm install -g @melonly/cli')) {
