@@ -1,6 +1,7 @@
 import { join as joinPath } from 'path'
 import { errorLine } from '../utils/errorLine'
 import { infoLine } from '../utils/infoLine'
+import { pascalCase } from '../utils/pascalCase'
 import { publishTemplate } from '../utils/publishTemplate'
 
 export default () => {
@@ -26,7 +27,7 @@ export default () => {
 
         'channel',
         {
-          className: `${generatedName.charAt(0).toUpperCase()}${generatedName.slice(1)}Channel`,
+          className: `${pascalCase(generatedName)}Channel`,
           name: generatedName,
         },
       )
@@ -39,7 +40,7 @@ export default () => {
 
         'controller',
         {
-          className: `${generatedName.charAt(0).toUpperCase()}${generatedName.slice(1)}Controller`,
+          className: `${pascalCase(generatedName)}Controller`,
           path: `${generatedName}s`,
           view: generatedName,
         },
@@ -53,7 +54,7 @@ export default () => {
 
         'email',
         {
-          className: `${generatedName.charAt(0).toUpperCase()}${generatedName.slice(1)}Email`,
+          className: `${pascalCase(generatedName)}Email`,
           view: generatedName,
         },
       )
@@ -72,7 +73,7 @@ export default () => {
 
         'model',
         {
-          className: `${generatedName.charAt(0).toUpperCase()}${generatedName.slice(1)}`,
+          className: `${pascalCase(generatedName)}`,
         },
       )
 
@@ -84,7 +85,7 @@ export default () => {
 
         'service',
         {
-          className: `${generatedName.charAt(0).toUpperCase()}${generatedName.slice(1)}Service`,
+          className: `${pascalCase(generatedName)}Service`,
         },
       )
 
