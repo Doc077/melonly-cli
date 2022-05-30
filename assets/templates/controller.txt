@@ -1,11 +1,11 @@
-import { Controller, Get, RenderResponse, Request, Response } from '@melonly/core'
+import { Controller, render, RenderResponse, Request, Response, Route } from '@melonly/core'
 
 @Controller()
 export class {{ className }} {
   constructor(private request: Request, private response: Response) { }
 
-  @Get('/{{ path }}')
+  @Route.get('/{{ path }}')
   public index(): RenderResponse {
-    return this.response.render('{{ view }}')
+    return render('{{ view }}')
   }
 }
