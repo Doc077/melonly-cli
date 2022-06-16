@@ -1,6 +1,7 @@
 import { copyFileSync, readFileSync, writeFileSync } from 'fs'
 import { join as joinPath } from 'path'
 import { bgGreenBright } from 'cli-color'
+import { Command } from '../decorators/command.decorator'
 import { errorLine } from '../utils/errorLine'
 import { infoLine } from '../utils/infoLine'
 import { removeDirectory } from '../utils/removeDirectory'
@@ -58,24 +59,29 @@ const stageInitRepository = () => {
   }
 }
 
-export default () => {
-  const appName = process.argv[3]
+@Command({
+  arguments: ['name'],
+})
+export class NewCommand {
+  public handle(): void {
+    const appName = process.argv[3]
 
-  if (!appName) {
-    errorLine('App name is required')
+    if (!appName) {
+      errorLine('App name is required')
 
-    return
+      return
+    }
+
+    stageGitClone(appName)
+
+    stagePackagesInstall(appName)
+
+    stageFilesPrepare(appName)
+
+    if (process.argv[4] === '--git') {
+      stageInitRepository()
+    }
+
+    infoLine(`Your project has been created. Run 'cd ${appName} && npm start' to launch your application.`)
   }
-
-  stageGitClone(appName)
-
-  stagePackagesInstall(appName)
-
-  stageFilesPrepare(appName)
-
-  if (process.argv[4] === '--git') {
-    stageInitRepository()
-  }
-
-  infoLine(`Your project has been created. Run 'cd ${appName} && npm start' to launch your application.`)
 }

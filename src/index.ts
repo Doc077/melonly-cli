@@ -1,62 +1,32 @@
 #!/usr/bin/env node
 
-import commandsCommand from './commands/commands'
-import makeCommand from './commands/make'
-import migrateCommand from './commands/migrate'
-import newCommand from './commands/new'
-import openCommand from './commands/open'
-import startCommand from './commands/start'
-import updateCommand from './commands/update'
-import versionCommand from './commands/version'
+import { CommandsCommand } from './commands/commands.command'
+import { MakeCommand } from './commands/make.command'
+import { MigrateCommand } from './commands/migrate.command'
+import { NewCommand } from './commands/new.command'
+import { OpenCommand } from './commands/open.command'
+import { StartCommand } from './commands/start.command'
+import { UpdateCommand } from './commands/update.command'
+import { VersionCommand } from './commands/version.command'
 
+import { Constructor } from './interfaces/constructor.interface'
 import { errorLine } from './utils/errorLine'
+
+const commands: Record<string, Constructor> = {
+  commands: CommandsCommand,
+  new: NewCommand,
+  make: MakeCommand,
+  migrate: MigrateCommand,
+  open: OpenCommand,
+  start: StartCommand,
+  update: UpdateCommand,
+  '-v': VersionCommand,
+  '--version': VersionCommand,
+  version: VersionCommand,
+}
 
 const command = process.argv[2]
 
-switch (command) {
-  case 'new':
-    newCommand()
-
-    break
-
-  case 'make':
-    makeCommand()
-
-    break
-
-  case 'migrate':
-    migrateCommand()
-
-    break
-
-  case 'open':
-    openCommand()
-
-    break
-
-  case 'start':
-    startCommand()
-
-    break
-
-  case 'update':
-    updateCommand()
-
-    break
-
-  case '-v':
-  case '--version':
-  case 'version':
-    versionCommand()
-
-    break
-
-  case 'commands':
-  case undefined:
-    commandsCommand()
-
-    break
-
-  default:
-    errorLine(`Invalid command. Run 'melon commands' to get list of available commands.`)
-}
+commands[command as keyof object]
+  ? new commands[command as keyof object]().handle()
+  : errorLine(`Invalid command. Run 'melon commands' to get list of available commands.`)
