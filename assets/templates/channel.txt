@@ -1,7 +1,7 @@
-import { BroadcastChannel, ChannelInterface } from '@melonly/core'
+import { Authorize, Channel } from '@melonly/core'
 
-@BroadcastChannel('{{ name }}/:id')
-export class {{ className }} implements ChannelInterface {
+@Channel('{{ name }}/:id')
+export class {{ className }} implements Authorize {
   public userAuthorized(): boolean {
     return true
   }
