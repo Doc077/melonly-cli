@@ -75,6 +75,37 @@ export class NewCommand {
     infoLine(`[${bgGreenBright('           ')} ] Applying template...`)
   
     switch (type) {
+      case 'react':
+        publishTemplate(joinPath(this.currentDirectory, 'resources', 'vite.config.js'), 'starters.vite-react')
+
+        /**
+         * Delete unused files and create React-specific ones
+         */
+
+        unlinkSync(joinPath(this.currentDirectory, 'public', 'main.js'))
+        unlinkSync(joinPath(this.currentDirectory, 'views', 'home.melon.html'))
+
+        publishTemplate(joinPath(this.currentDirectory, 'resources', 'react', 'main.js'), 'starters.script-react')
+        publishTemplate(joinPath(this.currentDirectory, 'resources', 'react', 'App.js'), 'starters.component-react')
+        publishTemplate(joinPath(this.currentDirectory, 'views', 'home.melon.html'), 'starters.home-react')
+
+        /**
+         * Create client-side package.json and
+         * install required dependencies
+         */
+
+        process.chdir('resources')
+
+        this.currentDirectory = process.cwd()
+
+        publishTemplate(joinPath(this.currentDirectory, 'package.json'), 'starters.package')
+
+        if (!runCommand('npm install -D react react-dom vite @vitejs/plugin-react')) {
+          this.failInstallation('Installing packages failed')
+        }
+
+        break
+
       case 'vue':
         publishTemplate(joinPath(this.currentDirectory, 'resources', 'vite.config.js'), 'starters.vite-vue')
 
@@ -98,7 +129,7 @@ export class NewCommand {
 
         this.currentDirectory = process.cwd()
 
-        publishTemplate(joinPath(this.currentDirectory, 'package.json'), 'starters.package-vue')
+        publishTemplate(joinPath(this.currentDirectory, 'package.json'), 'starters.package')
 
         if (!runCommand('npm install -D vue vite @vitejs/plugin-vue')) {
           this.failInstallation('Installing packages failed')
@@ -107,7 +138,7 @@ export class NewCommand {
         break
 
       default:
-        this.failInstallation(`Invalid template type. Try '--template=vue'`)
+        this.failInstallation(`Invalid template type. Try react or vue.`)
     }
   }
 

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Melonly with React.js</title>
+
+    <link rel="icon" href="/logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Roboto+Mono&display=swap">
+
+    <script type="module">
+      import RefreshRuntime from 'http://localhost:4200/@react-refresh'
+
+      RefreshRuntime.injectIntoGlobalHook(window)
+
+      window.$RefreshReg$ = () => {}
+      window.$RefreshSig$ = () => (type) => type
+      window.__vite_plugin_react_preamble_installed__ = true
+    </script>
+
+    [vite react]
+  </head>
+
+  <body>
+    <div id="app"></div>
+  </body>
+</html>

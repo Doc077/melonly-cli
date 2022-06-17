@@ -1,0 +1,9 @@
+export const App = () => {
+  return (
+    <main>
+      <h1>Melonly with React.js</h1>
+
+      <p>Edit <code>/resources/react/App.js</code> file to update this view</p>
+    </main>
+  )
+}
