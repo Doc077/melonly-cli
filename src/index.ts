@@ -27,6 +27,10 @@ const commands: Record<string, Constructor> = {
 
 const command = process.argv[2]
 
+const handleCommand = (command: string) => {
+  new commands[command]().handle()
+}
+
 commands[command as keyof object]
-  ? new commands[command as keyof object]().handle()
+  ? handleCommand(command)
   : errorLine(`Invalid command. Run 'melon commands' to get list of available commands.`)
