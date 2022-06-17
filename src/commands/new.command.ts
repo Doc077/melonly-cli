@@ -26,32 +26,33 @@ export class NewCommand {
   }
   
   private stageGitClone(appName: string): void {
-    infoLine(`[${bgGreenBright('   ')}         ] ✓ Creating new project '${appName}'...`)
+    infoLine(`[${bgGreenBright('   ')}         ] Creating new project '${appName}'...`)
   
     if (!runCommand(`git clone https://github.com/Doc077/melonly.git ${appName}`)) {
       this.failInstallation('Connection failed')
     }
   
     removeDirectory(joinPath(this.currentDirectory, appName, '.git'))
+    removeDirectory(joinPath(this.currentDirectory, appName, '.github'))
   }
   
   private stagePackagesInstall(appName: string): void {
     this.clearLine()
 
-    infoLine(`[${bgGreenBright('      ')}      ] ✓ Installing packages...`)
+    infoLine(`[${bgGreenBright('      ')}      ] Installing packages...`)
   
     process.chdir(appName)
     this.currentDirectory = process.cwd()
   
-    if (!runCommand('npm install')) {
-      this.failInstallation('Installing packages failed')
-    }
+    // if (!runCommand('npm install')) {
+    //   this.failInstallation('Installing packages failed')
+    // }
   }
   
   private stageFilesPrepare(appName: string): void {
     this.clearLine()
 
-    infoLine(`[${bgGreenBright('         ')}   ] ✓ Copying new files...`)
+    infoLine(`[${bgGreenBright('          ')}  ] Copying new files...`)
   
     copyFileSync(joinPath(this.currentDirectory, '.env.example'), joinPath(this.currentDirectory, '.env'))
   
@@ -71,7 +72,7 @@ export class NewCommand {
   private stageInitTemplate(type?: string) {
     this.clearLine()
 
-    infoLine(`[${bgGreenBright('            ')}] ✓ Applying template...`)
+    infoLine(`[${bgGreenBright('           ')} ] Applying template...`)
   
     switch (type) {
       case 'vue':
@@ -121,6 +122,12 @@ export class NewCommand {
       this.stageInitTemplate(match[1])
     }
 
-    infoLine(`Your project has been created. Run 'cd ${appName} && npm start' to launch your application.`)
+    this.clearLine()
+
+    infoLine(`[${bgGreenBright('            ')}] Finishing...`)
+
+    setTimeout(() => {
+      infoLine(`Project '${appName}' has been created. Run 'cd ${appName} && npm start' to launch your application.`)
+    }, 1000)
   }
 }
