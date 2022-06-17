@@ -1,5 +1,5 @@
 import { readFileSync } from 'fs'
-import { join as joinPath } from 'path'
+import { join as joinPath, sep as directorySeparator } from 'path'
 import { errorLine } from './error-line.function'
 import { makeFile } from './make-file.function'
 
@@ -11,7 +11,7 @@ export const publishTemplate = (path: string, template: string, variables: Recor
   const variablePattern = /([^@])\{\{ *([^ ]*?) *\}\}/g
 
   try {
-    let content = readFileSync(joinPath(__dirname, '..', '..', 'assets', 'templates', `${template}.txt`)).toString()
+    let content = readFileSync(joinPath(__dirname, '..', '..', 'assets', 'templates', `${template.replaceAll('.', directorySeparator)}.txt`)).toString()
 
     for (const expression of content.matchAll(variablePattern) ?? []) {
       let variableValue = variables[expression[2]]

@@ -1,0 +1,7 @@
+<template>
+  <div>Melonly with Vue.js</div>
+</template>
+
+<script setup>
+  //
+</script>
