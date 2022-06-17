@@ -1,4 +1,5 @@
 import { join as joinPath } from 'path'
+import { pluralize } from 'inflection'
 import { Command } from '../decorators/command.decorator'
 import { errorLine } from '../utils/error-line.function'
 import { infoLine } from '../utils/info-line.function'
@@ -31,8 +32,8 @@ export class MakeCommand {
           'controller',
           {
             className: `${pascalCase(name)}Controller`,
-            path: `${name}s`,
-            view: name,
+            path: pluralize(name),
+            view: pluralize(name),
           },
         )
 
