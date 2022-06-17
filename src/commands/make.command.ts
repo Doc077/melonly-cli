@@ -9,31 +9,16 @@ import { publishTemplate } from '../utils/publish-template.function'
   parameters: ['type', 'name'],
 })
 export class MakeCommand {
-  public handle(): void {
-    const generatedType = process.argv[3]
-    const generatedName = process.argv[4]
-
-    if (!generatedType) {
-      errorLine('File type is required')
-
-      return
-    }
-
-    if (!generatedName) {
-      errorLine('File name is required')
-
-      return
-    }
-
-    switch (generatedType) {
+  public handle(type: string, name: string): void {
+    switch (type) {
       case 'channel':
         publishTemplate(
-          joinPath(process.cwd(), 'src', 'channels', `${generatedName}.channel.ts`),
+          joinPath(process.cwd(), 'src', 'channels', `${name}.channel.ts`),
 
           'channel',
           {
-            className: `${pascalCase(generatedName)}Channel`,
-            name: generatedName,
+            className: `${pascalCase(name)}Channel`,
+            name: name,
           },
         )
 
@@ -41,13 +26,13 @@ export class MakeCommand {
 
       case 'controller':
         publishTemplate(
-          joinPath(process.cwd(), 'src', 'controllers', `${generatedName}.controller.ts`),
+          joinPath(process.cwd(), 'src', 'controllers', `${name}.controller.ts`),
 
           'controller',
           {
-            className: `${pascalCase(generatedName)}Controller`,
-            path: `${generatedName}s`,
-            view: generatedName,
+            className: `${pascalCase(name)}Controller`,
+            path: `${name}s`,
+            view: name,
           },
         )
 
@@ -55,17 +40,17 @@ export class MakeCommand {
 
       case 'email':
         publishTemplate(
-          joinPath(process.cwd(), 'src', 'emails', `${generatedName}.email.ts`),
+          joinPath(process.cwd(), 'src', 'emails', `${name}.email.ts`),
 
           'email',
           {
-            className: `${pascalCase(generatedName)}Email`,
-            view: generatedName,
+            className: `${pascalCase(name)}Email`,
+            view: name,
           },
         )
 
         publishTemplate(
-          joinPath(process.cwd(), 'views', 'emails', `${generatedName}.melon.html`),
+          joinPath(process.cwd(), 'views', 'emails', `${name}.melon.html`),
 
           'email-view',
         )
@@ -74,11 +59,11 @@ export class MakeCommand {
 
       case 'model':
         publishTemplate(
-          joinPath(process.cwd(), 'src', 'models', `${generatedName}.model.ts`),
+          joinPath(process.cwd(), 'src', 'models', `${name}.model.ts`),
 
           'model',
           {
-            className: `${pascalCase(generatedName)}`,
+            className: `${pascalCase(name)}`,
           },
         )
 
@@ -86,11 +71,11 @@ export class MakeCommand {
 
       case 'service':
         publishTemplate(
-          joinPath(process.cwd(), 'src', 'services', `${generatedName}.service.ts`),
+          joinPath(process.cwd(), 'src', 'services', `${name}.service.ts`),
 
           'service',
           {
-            className: `${pascalCase(generatedName)}Service`,
+            className: `${pascalCase(name)}Service`,
           },
         )
 
@@ -98,19 +83,19 @@ export class MakeCommand {
 
       case 'test':
         publishTemplate(
-          joinPath(process.cwd(), 'tests', `${generatedName}.test.ts`), 'test', {
-            name: generatedName
+          joinPath(process.cwd(), 'tests', `${name}.test.ts`), 'test', {
+            name: name
           },
         )
 
         break
 
       default:
-        errorLine(`Unknown generator command '${generatedType}'`)
+        errorLine(`Unknown generator command '${type}'`)
 
         return
     }
 
-    infoLine(`Generated new ${generatedType} '${generatedName}'`)
+    infoLine(`Generated new ${type} '${name}'`)
   }
 }

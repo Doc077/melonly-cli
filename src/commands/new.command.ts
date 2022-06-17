@@ -63,15 +63,7 @@ export class NewCommand {
     }
   }
 
-  public handle(): void {
-    const appName = process.argv[3]
-
-    if (!appName) {
-      errorLine('App name is required')
-
-      return
-    }
-
+  public handle(appName: string): void {
     this.stageGitClone(appName)
 
     this.stagePackagesInstall(appName)

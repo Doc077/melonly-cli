@@ -18,7 +18,7 @@ export const handleCommand = (name: string, commands: Record<string, Constructor
     parameters.push(resolved)
 
     if (!resolved) {
-      errorLine(`Missing required parameter '${argument}'`)
+      errorLine(`Parameter '${argument}' is required`)
   
       process.exit(1)
     }
