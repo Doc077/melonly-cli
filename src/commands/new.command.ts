@@ -43,9 +43,9 @@ export class NewCommand {
     process.chdir(appName)
     this.currentDirectory = process.cwd()
   
-    // if (!runCommand('npm install')) {
-    //   this.failInstallation('Installing packages failed')
-    // }
+    if (!runCommand('npm install')) {
+      this.failInstallation('Installing packages failed')
+    }
   }
   
   private stageFilesPrepare(appName: string): void {

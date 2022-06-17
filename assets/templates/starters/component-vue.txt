@@ -1,7 +1,37 @@
 <template>
-  <div>Melonly with Vue.js</div>
+  <main>
+    <h1>Melonly with Vue.js</h1>
+
+    <p>Edit <code>/resources/vue/App.vue</code> file to update this view</p>
+  </main>
 </template>
 
-<script setup>
-  //
-</script>
+<style>
+  body {
+    margin: 0;
+    font-family: 'DM Sans', sans-serif;
+    height: 100vh;
+  }
+
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  h1 {
+    margin: 0;
+  }
+
+  p {
+    opacity: 0.9;
+  }
+
+  code {
+    background: #ecf0f3;
+    padding: 4px 6px;
+    border-radius: 6px;
+  }
+</style>

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port 4200",
     "build": "vite build",
     "preview": "vite preview"
   }

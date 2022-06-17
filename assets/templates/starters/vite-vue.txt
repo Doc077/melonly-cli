@@ -7,8 +7,8 @@ export default defineConfig({
   build: {
     manifest: true,
     rollupOptions: {
-      input: resolve(__dirname, 'resources', 'vue', 'main.js')
+      input: resolve(__dirname, 'vue', 'main.js')
     },
-    outDir: resolve(__dirname, 'public'),
+    outDir: resolve(__dirname, '..', 'public'),
   },
 })
