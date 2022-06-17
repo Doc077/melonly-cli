@@ -10,7 +10,8 @@ import { UpdateCommand } from './commands/update.command'
 import { VersionCommand } from './commands/version.command'
 
 import { Constructor } from './interfaces/constructor.interface'
-import { errorLine } from './utils/errorLine'
+import { errorLine } from './utils/error-line.function'
+import { handleCommand } from './utils/handle-command.function'
 
 const commands: Record<string, Constructor> = {
   commands: CommandsCommand,
@@ -27,10 +28,6 @@ const commands: Record<string, Constructor> = {
 
 const command = process.argv[2]
 
-const handleCommand = (command: string) => {
-  new commands[command]().handle()
-}
-
 commands[command as keyof object]
-  ? handleCommand(command)
+  ? handleCommand(command, commands)
   : errorLine(`Invalid command. Run 'melon commands' to get list of available commands.`)

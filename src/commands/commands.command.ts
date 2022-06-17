@@ -1,4 +1,4 @@
-import { infoLine } from '../utils/infoLine'
+import { infoLine } from '../utils/info-line.function'
 
 export class CommandsCommand {
   public handle(): void {

@@ -2,13 +2,13 @@ import { copyFileSync, readFileSync, writeFileSync } from 'fs'
 import { join as joinPath } from 'path'
 import { bgGreenBright } from 'cli-color'
 import { Command } from '../decorators/command.decorator'
-import { errorLine } from '../utils/errorLine'
-import { infoLine } from '../utils/infoLine'
-import { removeDirectory } from '../utils/removeDirectory'
-import { runCommand } from '../utils/runCommand'
+import { errorLine } from '../utils/error-line.function'
+import { infoLine } from '../utils/info-line.function'
+import { removeDirectory } from '../utils/remove-directory.function'
+import { runCommand } from '../utils/run-command.function'
 
 @Command({
-  arguments: ['name'],
+  parameters: ['name'],
 })
 export class NewCommand {
   private failInstallation(message?: string): void {

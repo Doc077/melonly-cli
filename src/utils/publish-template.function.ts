@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs'
 import { join as joinPath } from 'path'
-import { errorLine } from './errorLine'
-import { makeFile } from './makeFile'
+import { errorLine } from './error-line.function'
+import { makeFile } from './make-file.function'
 
 export interface ViewVariables {
   [key: string]: any

@@ -1,13 +1,14 @@
 import { ClassDecorator } from '../types/class-decorator.type'
+import { Constructor } from '../interfaces/constructor.interface'
 
 interface Data {
-  arguments: string[]
+  parameters: string[]
 }
 
 export const Command = (data?: Data): ClassDecorator<any> => {
-  return (target: any) => {
-    if (data) {
-      target.arguments = data.arguments
+  return (target: Constructor) => {
+    return class extends target {
+      public readonly parameters = data?.parameters
     }
   }
 }

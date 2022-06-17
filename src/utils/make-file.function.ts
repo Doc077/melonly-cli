@@ -1,6 +1,6 @@
 import { existsSync, mkdirSync, writeFileSync } from 'fs'
 import { dirname } from 'path'
-import { errorLine } from './errorLine'
+import { errorLine } from './error-line.function'
 
 export const makeFile = (path: string, content: string) => {
   if (!existsSync(path)) {

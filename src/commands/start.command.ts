@@ -1,4 +1,4 @@
-import { runCommand } from '../utils/runCommand'
+import { runCommand } from '../utils/run-command.function'
 
 export class StartCommand {
   public handle(): void {

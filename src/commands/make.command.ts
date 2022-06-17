@@ -1,12 +1,12 @@
 import { join as joinPath } from 'path'
 import { Command } from '../decorators/command.decorator'
-import { errorLine } from '../utils/errorLine'
-import { infoLine } from '../utils/infoLine'
-import { pascalCase } from '../utils/pascalCase'
-import { publishTemplate } from '../utils/publishTemplate'
+import { errorLine } from '../utils/error-line.function'
+import { infoLine } from '../utils/info-line.function'
+import { pascalCase } from '../utils/pascal-case.function'
+import { publishTemplate } from '../utils/publish-template.function'
 
 @Command({
-  arguments: ['type', 'name'],
+  parameters: ['type', 'name'],
 })
 export class MakeCommand {
   public handle(): void {

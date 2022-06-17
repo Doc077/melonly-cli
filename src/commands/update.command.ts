@@ -1,6 +1,6 @@
-import { errorLine } from '../utils/errorLine'
-import { infoLine } from '../utils/infoLine'
-import { runCommand } from '../utils/runCommand'
+import { errorLine } from '../utils/error-line.function'
+import { infoLine } from '../utils/info-line.function'
+import { runCommand } from '../utils/run-command.function'
 
 export class UpdateCommand {
   public handle(): void {
