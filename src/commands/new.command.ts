@@ -29,7 +29,7 @@ export class NewCommand {
     infoLine(`[${bgGreenBright('   ')}         ] Creating new project '${appName}'...`)
   
     if (!runCommand(`git clone https://github.com/Doc077/melonly.git ${appName}`)) {
-      this.failInstallation('Connection failed')
+      this.failInstallation('Downloading failed. Check your internet connection.')
     }
   
     removeDirectory(joinPath(this.currentDirectory, appName, '.git'))
@@ -52,7 +52,7 @@ export class NewCommand {
   private stageFilesPrepare(appName: string): void {
     this.clearLine()
 
-    infoLine(`[${bgGreenBright('          ')}  ] Copying new files...`)
+    infoLine(`[${bgGreenBright('          ')}  ] Creating new files...`)
   
     copyFileSync(joinPath(this.currentDirectory, '.env.example'), joinPath(this.currentDirectory, '.env'))
   
