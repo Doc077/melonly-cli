@@ -1,5 +1,9 @@
 #!/usr/bin/env node
 
+import { Constructor } from './interfaces/constructor.interface'
+import { errorLine } from './utils/error-line.function'
+import { handleCommand } from './utils/handle-command.function'
+
 import { CommandsCommand } from './commands/commands.command'
 import { MakeCommand } from './commands/make.command'
 import { MigrateCommand } from './commands/migrate.command'
@@ -9,13 +13,10 @@ import { StartCommand } from './commands/start.command'
 import { UpdateCommand } from './commands/update.command'
 import { VersionCommand } from './commands/version.command'
 
-import { Constructor } from './interfaces/constructor.interface'
-import { errorLine } from './utils/error-line.function'
-import { handleCommand } from './utils/handle-command.function'
-
 const commands: Record<string, Constructor> = {
   commands: CommandsCommand,
   new: NewCommand,
+  m: MakeCommand,
   make: MakeCommand,
   migrate: MigrateCommand,
   open: OpenCommand,
