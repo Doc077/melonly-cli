@@ -109,6 +109,39 @@ export class MakeCommand {
 
         break
 
+      case 'middleware':
+        publishTemplate(
+          joinPath(this.currentDirectory, 'src', 'middleware', `${name}.middleware.ts`),
+
+          'middleware', { name },
+        )
+
+        /**
+         * Register global middleware in main.ts file
+         */
+
+        if (process.argv[5] === '--global') {
+          try {
+            const path = joinPath(this.currentDirectory, 'src', 'main.ts')
+        
+            let data = readFileSync(path).toString()
+
+            const inlineMatch = data.match(/globalMiddleware: *?(\[(.*?),?\])/) ?? []
+            const multilineMatch = data.match(/globalMiddleware: *?(\[((.|[\n\r])*?),?\])/m) ?? []
+            const importMatch = data.match(/^(import .*?(\n|\r\n))$/m) ?? []
+
+            data = data.replace(inlineMatch[1], `[${inlineMatch[2] ? inlineMatch[2] + ', ' : inlineMatch[2]}${name}Middleware }]`)
+              .replace(multilineMatch[1], `[${multilineMatch[2]}  ${name}Middleware },\n  ]`)
+              .replace(importMatch[0], `${importMatch[1]}import { ${name}Middleware } from './middleware/${name}.middleware'\n`)
+
+            writeFileSync(joinPath(this.currentDirectory, 'src', 'main.ts'), data)
+          } catch (error) {
+            errorLine('Cannot register global middleware automatically')
+          }
+        }
+
+        break
+
       case 'model':
         publishTemplate(
           joinPath(this.currentDirectory, 'src', 'models', `${name}.model.ts`),

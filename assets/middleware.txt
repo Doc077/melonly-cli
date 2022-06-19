@@ -1,0 +1,5 @@
+import { Request, Response } from '@melonly/core'
+
+export const {{ name }}Middleware = (request: Request, response: Response) => {
+  //
+}
