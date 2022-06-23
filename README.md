@@ -42,7 +42,7 @@ The official command line tool for [Melonly.js Framework](https://github.com/Doc
 
 ## Requirements
 
-To run Melonly, your environment has to met few requirements:
+To run Melonly, your environment has to meet few requirements:
 
 - Node.js 16+
 - [`npm`](https://nodejs.org/en/download/) and [`git`](https://git-scm.com) installed
